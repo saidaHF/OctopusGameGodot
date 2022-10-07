@@ -11,7 +11,7 @@ Follow this [tutorial](https://docs.godotengine.org/en/stable/getting_started/fi
 
 Modify the 2D Godot guided activity game or create a new one.
 
-**Minimum project requirements:**
+* **Minimum project requirements:**
 
 - [ ] Add some movement to the game
 - [ ] Improve or create physical
@@ -19,7 +19,7 @@ Modify the 2D Godot guided activity game or create a new one.
 - [ ] Create and instantiate at least one new scene
 - [ ] Modify the GUI to add other settings
 
-**Other possible modifications or concepts to include:**
+* **Other possible modifications or concepts to include:**
 
 - [ ] Different levels of difficulty
 - [ ] Improve start menu (accessible with mouse)
