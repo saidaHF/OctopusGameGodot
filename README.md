@@ -1,4 +1,4 @@
-# Little Octopus Game with Godot
+# Little Octopus Game with Godot 🦑🐙
 
 * **Controls:** You can use keys **A W S D** for to move and **ENTER** for START
 * **Mechanics:** You must escape from the black squid
