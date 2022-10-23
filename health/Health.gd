@@ -21,6 +21,7 @@ func set_max(new_max):
 
 func _initialize():
 	current = max_amount
+	$Wrapper/HealthBar.value = current
 	emit_signal("max_changed", max_amount)
 	emit_signal("changed", current)
 

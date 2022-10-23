@@ -95,24 +95,36 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ButtonEasy" type="Button" parent="."]
-margin_left = 82.0
+margin_left = 30.0
 margin_top = 360.0
-margin_right = 190.0
+margin_right = 138.0
 margin_bottom = 413.0
 rect_pivot_offset = Vector2( -856, -176 )
 custom_fonts/font = SubResource( 1 )
+toggle_mode = true
 text = "Easy"
 
-[node name="ButtonHard" type="Button" parent="."]
-margin_left = 294.0
-margin_top = 360.0
-margin_right = 399.0
-margin_bottom = 416.0
+[node name="ButtonNormal" type="Button" parent="."]
+margin_left = 163.0
+margin_top = 359.0
+margin_right = 312.0
+margin_bottom = 415.0
 custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+text = "Normal"
+
+[node name="ButtonHard" type="Button" parent="."]
+margin_left = 338.0
+margin_top = 359.0
+margin_right = 443.0
+margin_bottom = 415.0
+custom_fonts/font = SubResource( 1 )
+toggle_mode = true
 text = "Hard"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="BombButton" to="." method="_on_BombButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
 [connection signal="pressed" from="ButtonEasy" to="." method="_on_ButtonEasy_pressed"]
+[connection signal="pressed" from="ButtonNormal" to="." method="_on_ButtonNormal_pressed"]
 [connection signal="pressed" from="ButtonHard" to="." method="_on_ButtonHard_pressed"]

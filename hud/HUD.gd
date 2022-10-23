@@ -45,7 +45,9 @@ func _on_StartButton_pressed():
 	
 	$ChoseLevel.hide()
 	$ButtonEasy.hide()
+	$ButtonNormal.hide()
 	$ButtonHard.hide()
+	
 
 func _on_BombButton_pressed():
 	get_tree().call_group("mobs", "queue_free")
@@ -56,7 +58,20 @@ func _on_BombButton_pressed():
 
 func _on_ButtonEasy_pressed():
 	emit_signal("Difficult", "easy")
+	$ButtonEasy.set_pressed(true)
+	$ButtonNormal.set_pressed(false) 
+	$ButtonHard.set_pressed(false)
+	
+func _on_ButtonNormal_pressed():
+	emit_signal("Difficult", "normal")
+	$ButtonEasy.set_pressed(false)
+	$ButtonNormal.set_pressed(true) 
+	$ButtonHard.set_pressed(false)
 	
 func _on_ButtonHard_pressed():
-	emit_signal("Difficult", "hard")	
+	emit_signal("Difficult", "hard")
+	$ButtonEasy.set_pressed(false)
+	$ButtonNormal.set_pressed(false) 
+	$ButtonHard.set_pressed(true)
+
 

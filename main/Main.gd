@@ -2,7 +2,7 @@ extends Node
 
 export(PackedScene) var mob_scene
 var score
-var levelDificult
+var velocityEnemiesMultiplier = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +17,7 @@ func game_over():
 	$HUD.show_game_over()
 	$Music.stop()
 	$DeathSound.play()
+	$Health.hide()
 	
 func new_game():
 	score = 0
@@ -30,9 +31,14 @@ func new_game():
 	
 func selectDificult(levelDificult):
 	if levelDificult == "easy":
-		print("select easy")
+		velocityEnemiesMultiplier = 0.5
+		
+	if levelDificult == "normal":
+		velocityEnemiesMultiplier = 1
+		
 	if levelDificult == "hard":
-		print("select hard")	
+		velocityEnemiesMultiplier = 2
+	
 	
 func _on_StartTimer_timeout():
 	$MobTimer.start()
@@ -62,6 +68,7 @@ func _on_MobTimer_timeout():
 
 	# Choose the velocity for the mob.
 	var velocity = Vector2(rand_range(150.0, 250.0), 0.0)
+	velocity *= velocityEnemiesMultiplier
 	mob.linear_velocity = velocity.rotated(direction)
 
 	# Spawn the mob by adding it to the Main scene.
