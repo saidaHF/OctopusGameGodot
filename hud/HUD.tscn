@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://hud/HUD.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
+size = 38
 font_data = ExtResource( 1 )
 
 [sub_resource type="InputEventAction" id=2]
@@ -35,38 +35,56 @@ text = "0"
 align = 1
 
 [node name="Message" type="Label" parent="."]
+anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -130.0
-margin_bottom = 70.0
+margin_left = -480.0
+margin_top = -163.5
+margin_bottom = 13.5
 custom_fonts/font = SubResource( 1 )
-text = "Dodge the Creeps!"
+text = "Dodge the Creeps!
+
+"
 align = 1
 autowrap = true
 
+[node name="ChoseLevel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -90.5
+margin_right = 236.0
+margin_bottom = -35.5
+custom_fonts/font = SubResource( 1 )
+text = "choose the difficulty:"
+align = 1
+
 [node name="StartButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -112.0
-margin_top = -208.0
-margin_right = 136.0
-margin_bottom = -108.0
+anchor_bottom = 0.5
+margin_left = -103.5
+margin_top = 181.0
+margin_right = 103.5
+margin_bottom = 265.0
 custom_fonts/font = SubResource( 1 )
 shortcut = SubResource( 3 )
-text = "Start"
+text = "START"
+icon_align = 1
 
 [node name="BombButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -47.0
-margin_top = -73.0
-margin_right = 70.0
-margin_bottom = -27.0
+margin_left = -58.5
+margin_top = -64.0
+margin_right = 58.5
+margin_bottom = -18.0
 custom_fonts/font = SubResource( 5 )
 shortcut = SubResource( 4 )
 text = "BOMB!"
@@ -76,6 +94,25 @@ icon_align = 1
 wait_time = 2.0
 one_shot = true
 
+[node name="ButtonEasy" type="Button" parent="."]
+margin_left = 82.0
+margin_top = 360.0
+margin_right = 190.0
+margin_bottom = 413.0
+rect_pivot_offset = Vector2( -856, -176 )
+custom_fonts/font = SubResource( 1 )
+text = "Easy"
+
+[node name="ButtonHard" type="Button" parent="."]
+margin_left = 294.0
+margin_top = 360.0
+margin_right = 399.0
+margin_bottom = 416.0
+custom_fonts/font = SubResource( 1 )
+text = "Hard"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="BombButton" to="." method="_on_BombButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="ButtonEasy" to="." method="_on_ButtonEasy_pressed"]
+[connection signal="pressed" from="ButtonHard" to="." method="_on_ButtonHard_pressed"]

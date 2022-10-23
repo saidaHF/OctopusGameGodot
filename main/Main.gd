@@ -2,6 +2,7 @@ extends Node
 
 export(PackedScene) var mob_scene
 var score
+var levelDificult
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,6 +27,12 @@ func new_game():
 	get_tree().call_group("mobs", "queue_free")
 	$Music.play()
 	$Health.show()
+	
+func selectDificult(levelDificult):
+	if levelDificult == "easy":
+		print("select easy")
+	if levelDificult == "hard":
+		print("select hard")	
 	
 func _on_StartTimer_timeout():
 	$MobTimer.start()

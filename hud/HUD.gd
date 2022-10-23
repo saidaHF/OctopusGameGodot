@@ -2,6 +2,9 @@ extends CanvasLayer
 
 signal start_game
 signal BombButton
+signal Difficult
+
+
 var timer = null
 
 # Called when the node enters the scene tree for the first time. (Only when enter in the game)
@@ -39,6 +42,10 @@ func _on_StartButton_pressed():
 	$BombButton.disabled = false
 	$BombButton.show()
 	emit_signal("start_game")
+	
+	$ChoseLevel.hide()
+	$ButtonEasy.hide()
+	$ButtonHard.hide()
 
 func _on_BombButton_pressed():
 	get_tree().call_group("mobs", "queue_free")
@@ -46,4 +53,10 @@ func _on_BombButton_pressed():
 	# TIME DELAY FOR CLICK THE BUTTON BUMB!:	
 	yield(get_tree().create_timer(5), "timeout")
 	$BombButton.disabled = false
+
+func _on_ButtonEasy_pressed():
+	emit_signal("Difficult", "easy")
+	
+func _on_ButtonHard_pressed():
+	emit_signal("Difficult", "hard")	
 
