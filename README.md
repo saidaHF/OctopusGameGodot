@@ -13,7 +13,7 @@ Modify the 2D Godot guided activity game or create a new one.
 
 * **Minimum project requirements:**
 
-- [ ] Add some movement to the game
+- [X] Add some movement to the game
 - [X] Improve or create physical
 - [X] Add new signals between nodes
 - [X] Create and instantiate at least one new scene
@@ -21,9 +21,9 @@ Modify the 2D Godot guided activity game or create a new one.
 
 * **Other possible modifications or concepts to include:**
 
-- [ ] Different levels of difficulty
+- [X] Different levels of difficulty
 - [X] Improve start menu (accessible with mouse)
 - [ ] Apply more complex physics
-- [ ] Create coroutines
+- [X] Create coroutines
 - [ ] Random events
 - [ ] Everything you can think of...
