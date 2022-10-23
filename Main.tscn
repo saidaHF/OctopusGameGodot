@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PlayerScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/istockphoto-1061611682-612x612.jpg" type="Texture" id=5]
 [ext_resource path="res://art/House In a Forest Loop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Health.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -39,6 +40,8 @@ wait_time = 0.5
 wait_time = 2.0
 one_shot = true
 
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 240, 450 )
 
@@ -47,16 +50,19 @@ curve = SubResource( 1 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[connection signal="hit" from="Player" to="." method="game_over"]
+[node name="Health" parent="." instance=ExtResource( 7 )]
+
+[connection signal="hit" from="Player" to="Health" method="_on_Player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="start_game" from="HUD" to="Health" method="_initialize"]
+[connection signal="depleted" from="Health" to="." method="game_over"]
+[connection signal="depleted" from="Health" to="Player" method="_on_Health_depleted"]

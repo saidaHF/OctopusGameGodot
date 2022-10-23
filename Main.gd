@@ -3,15 +3,13 @@ extends Node
 export(PackedScene) var mob_scene
 var score
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	$Health.hide()
 	# new_game()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+	
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -27,6 +25,7 @@ func new_game():
 	$HUD.show_message("Get Ready")
 	get_tree().call_group("mobs", "queue_free")
 	$Music.play()
+	$Health.show()
 	
 func _on_StartTimer_timeout():
 	$MobTimer.start()
@@ -60,3 +59,7 @@ func _on_MobTimer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+func setHealth():
+	$Health.set_current()
+

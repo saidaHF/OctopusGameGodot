@@ -1,9 +1,5 @@
 extends RigidBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 
 # Called when the node enters the scene tree for the first time.
 # First, we get the list of animation names from the AnimatedSprite's 

@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Health.gd" type="Script" id=1]
+[ext_resource path="res://art/heart.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.054902, 0.054902, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.647059, 0.533333, 0.533333, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Health" type="Node2D"]
+script = ExtResource( 1 )
+current = 6
+
+[node name="Wrapper" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="Wrapper"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 80.0
+margin_top = 30.0
+margin_right = 344.0
+margin_bottom = 61.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 1 )
+max_value = 10.0
+step = 1.0
+value = 10.0
+percent_visible = false
+
+[node name="HearthImage" type="TextureRect" parent="Wrapper/HealthBar"]
+margin_left = -30.0
+margin_top = -10.0
+margin_right = 20.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+expand = true
+
+[connection signal="changed" from="Wrapper/HealthBar" to="Wrapper/HealthBar" method="set_value"]
